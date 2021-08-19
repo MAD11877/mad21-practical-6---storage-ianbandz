@@ -32,9 +32,9 @@ public class MainActivity extends AppCompatActivity {
 //        u.id = 1;
 //        u.followed = false;
 
-        TextView name = findViewById(R.id.txtName);
+        TextView name = findViewById(R.id.name);
         name.setText(u.name);
-        TextView description = findViewById(R.id.txtDescription);
+        TextView description = findViewById(R.id.description);
         description.setText(u.description);
         setFollowBtn();
     }

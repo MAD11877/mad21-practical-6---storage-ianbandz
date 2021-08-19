@@ -21,8 +21,8 @@ public class MyDBHandler extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String CREATE_TABLE = "CREATE TABLE user (name TEXT, description TEXT, id INTEGER PRIMARY KEY AUTOINCREMENT, followed INTEGER)";
-        db.execSQL(CREATE_TABLE);
+        String create = "CREATE TABLE user (name TEXT, description TEXT, id INTEGER PRIMARY KEY AUTOINCREMENT, followed INTEGER)";
+        db.execSQL(create);
 
         for(int i=0; i<20; i++)
         {
@@ -42,7 +42,7 @@ public class MyDBHandler extends SQLiteOpenHelper {
 
     public ArrayList<User> getUsers()
     {
-        ArrayList<User> list = new ArrayList<User> ();
+        ArrayList<User> list = new ArrayList<>();
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery("SELECT * FROM user", null);
 
@@ -52,7 +52,7 @@ public class MyDBHandler extends SQLiteOpenHelper {
             u.name = cursor.getString(0);
             u.description = cursor.getString(1);
             u.id = cursor.getInt(2);
-            u.followed = cursor.getInt(3)==0?false:true;
+            u.followed = cursor.getInt(3) != 0;
 
             list.add(u);
         }
